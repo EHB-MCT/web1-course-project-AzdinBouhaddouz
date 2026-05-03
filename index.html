@@ -1,1 +1,288 @@
-<!-- nothing here -->
+<!doctype html>
+<html lang="nl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Rimuru Tempest | Portfolio</title>
+
+		<link
+			href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap"
+			rel="stylesheet"
+		/>
+
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: "Nunito", sans-serif;
+				background: radial-gradient(circle at top, #0f172a, #020617);
+				color: #e2e8f0;
+				overflow-x: hidden;
+			}
+
+			/* PARTICLES */
+			.particle {
+				position: fixed;
+				width: 4px;
+				height: 4px;
+				background: #38bdf8;
+				border-radius: 50%;
+				opacity: 0.6;
+				animation: float 10s linear infinite;
+			}
+
+			@keyframes float {
+				from {
+					transform: translateY(100vh);
+				}
+				to {
+					transform: translateY(-10vh);
+				}
+			}
+
+			header {
+				position: fixed;
+				width: 100%;
+				top: 0;
+				background: rgba(15, 23, 42, 0.85);
+				backdrop-filter: blur(12px);
+				z-index: 1000;
+			}
+
+			.navbar {
+				display: flex;
+				justify-content: space-between;
+				padding: 1rem 2rem;
+			}
+
+			.nav-menu {
+				display: flex;
+				gap: 2rem;
+				list-style: none;
+			}
+
+			.nav-menu a {
+				color: #e2e8f0;
+				text-decoration: none;
+				transition: 0.3s;
+			}
+
+			.nav-menu a:hover {
+				color: #38bdf8;
+			}
+
+			section {
+				padding: 100px 20px;
+				max-width: 1100px;
+				margin: auto;
+			}
+
+			.hero {
+				height: 100vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+			}
+
+			.hero h1 {
+				font-size: 3rem;
+				background: linear-gradient(90deg, #38bdf8, #818cf8);
+				-webkit-background-clip: text;
+				color: transparent;
+			}
+
+			.grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+				gap: 1.5rem;
+			}
+
+			.card {
+				background: rgba(30, 41, 59, 0.8);
+				border: 1px solid rgba(255, 255, 255, 0.05);
+				padding: 1.5rem;
+				border-radius: 16px;
+				cursor: pointer;
+				transition: 0.3s;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.card::before {
+				content: "";
+				position: absolute;
+				inset: 0;
+				background: linear-gradient(
+					120deg,
+					transparent,
+					rgba(56, 189, 248, 0.2),
+					transparent
+				);
+				opacity: 0;
+				transition: 0.3s;
+			}
+
+			.card:hover::before {
+				opacity: 1;
+			}
+
+			.card:hover {
+				transform: translateY(-6px) scale(1.02);
+			}
+
+			.extra {
+				max-height: 0;
+				overflow: hidden;
+				transition: all 0.4s ease;
+				opacity: 0;
+				transform: translateY(-10px);
+			}
+
+			.card.active .extra {
+				max-height: 200px;
+				opacity: 1;
+				transform: translateY(0);
+				margin-top: 10px;
+			}
+
+			h2 {
+				margin-bottom: 1.5rem;
+			}
+
+			footer {
+				text-align: center;
+				padding: 2rem;
+				opacity: 0.6;
+			}
+
+			html {
+				scroll-behavior: smooth;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- PARTICLES SCRIPT -->
+		<script>
+			for (let i = 0; i < 25; i++) {
+				let p = document.createElement("div");
+				p.className = "particle";
+				p.style.left = Math.random() * 100 + "%";
+				p.style.animationDuration = 5 + Math.random() * 5 + "s";
+				document.body.appendChild(p);
+			}
+		</script>
+
+		<header>
+			<nav class="navbar">
+				<h3>✦ Rimuru</h3>
+				<ul class="nav-menu">
+					<li><a href="#home">Home</a></li>
+					<li><a href="#ervaring">Ervaring</a></li>
+					<li><a href="#skills">Vaardigheden</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<section id="home" class="hero">
+			<div>
+				<h1>Rimuru Tempest</h1>
+				<p>Groot Demon Lord • Leider van Tempest</p>
+			</div>
+		</section>
+
+		<section id="ervaring">
+			<h2>Ervaring</h2>
+			<div class="grid">
+				<div class="card" onclick="toggle(this)">
+					<h3>Herboren</h3>
+					<p>Van mens naar slijm.</p>
+					<div class="extra">
+						<p>
+							Rimuru werd herboren met unieke skills zoals Predator en Great
+							Sage, wat de basis vormde van zijn groei.
+						</p>
+					</div>
+				</div>
+
+				<div class="card" onclick="toggle(this)">
+					<h3>Natie opgebouwd</h3>
+					<p>Tempest gecreëerd.</p>
+					<div class="extra">
+						<p>
+							Hij bouwde een samenleving waar monsters en mensen samenleven in
+							vrede en samenwerking.
+						</p>
+					</div>
+				</div>
+
+				<div class="card" onclick="toggle(this)">
+					<h3>Demon Lord</h3>
+					<p>Ultieme evolutie bereikt.</p>
+					<div class="extra">
+						<p>
+							Na een oorlog evolueerde hij en verkreeg ongekende krachten en
+							autoriteit.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="skills">
+			<h2>Vaardigheden</h2>
+			<div class="grid">
+				<div class="card" onclick="toggle(this)">
+					<h3>Predator</h3>
+					<p>Absorbeert krachten.</p>
+					<div class="extra">
+						<p>
+							Laat hem vijanden absorberen en hun krachten kopiëren en
+							verbeteren.
+						</p>
+					</div>
+				</div>
+
+				<div class="card" onclick="toggle(this)">
+					<h3>Raphael</h3>
+					<p>Ultieme intelligentie.</p>
+					<div class="extra">
+						<p>
+							Een autonome intelligentie die strategie en analyse uitvoert op
+							topniveau.
+						</p>
+					</div>
+				</div>
+
+				<div class="card" onclick="toggle(this)">
+					<h3>Magie</h3>
+					<p>Alle elementen beheersen.</p>
+					<div class="extra">
+						<p>
+							Beheerst ruimte, tijd en alle elementen, wat hem bijna
+							onverslaanbaar maakt.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<footer>
+			<p>© Rimuru Tempest</p>
+		</footer>
+
+		<script>
+			function toggle(selected) {
+				document.querySelectorAll(".card").forEach((card) => {
+					if (card !== selected) card.classList.remove("active");
+				});
+				selected.classList.toggle("active");
+			}
+		</script>
+	</body>
+</html>
